@@ -2,6 +2,5 @@
 # Password: password 
 
 <br />
-<br />
 
-### Date: Month/Da
+### Date: Month/Date/Year
