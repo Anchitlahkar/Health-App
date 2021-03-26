@@ -92,11 +92,12 @@ export default class CustomSideBarMenu extends React.Component {
             source={{
               uri: this.state.image,
             }}
+            icon={{name: 'user', type: 'font-awesome'}}
             size={200}
             onPress={() => {
               this.selectPicture();
             }}
-            // containerStyle={styles.imageContainer}
+            containerStyle={styles.imageContainer}
             showEditButton
           />
           <Text
@@ -153,10 +154,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   imageContainer: {
-    flex: 0.75,
-    width: 230,
-    height: 250,
-    marginLeft: 20,
     marginTop: 30,
     borderRadius: 40,
   },

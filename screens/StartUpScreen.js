@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   Text,
   View,
@@ -6,28 +6,43 @@ import {
   TextInput,
   TouchableOpacity,
   FlatList,
-  Button
-} from 'react-native';
-import firebase from 'firebase';
-import { ScrollView } from 'react-native-gesture-handler';
-import db from '../config';
-import Header from '../components/Header';
-import CheckBox from './CheckBox'
-
+  Button,
+} from "react-native";
+import Header from "../components/Header";
 
 export default class StartUpScreen extends React.Component {
   render() {
     return (
       <View>
-        <Header title="How are you feeling??" navigation={this.props.navigation}/>
+        <Header
+          title="How are you feeling??"
+          navigation={this.props.navigation}
+        />
         <View>
-        <TouchableOpacity onPress={()=>{this.props.navigation.navigate('CheckBox')}}>
-        <Text>Take A Test</Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.button, { marginLeft: "25%" }]}
+            onPress={() => {
+              this.props.navigation.navigate("TestPage");
+            }}
+          >
+            <Text style={{ color: "black", fontWeight: "bold", marginTop: 5 }}>
+              Take A Test
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
   }
 }
 const styles = StyleSheet.create({
+  button: {
+    backgroundColor: "white",
+    width: 200,
+    height: 40,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 10,
+    marginTop: 20,
+    borderWidth: 5,
+  },
 });

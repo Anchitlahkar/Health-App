@@ -13,14 +13,12 @@ import {
 import firebase from 'firebase';
 import { ScrollView } from 'react-native-gesture-handler';
 import db from '../config';
-import MyHeader from '../components/Header';
-import StartUpScreen from './StartUpScreen';
 
 export default class WelcomeScreen extends React.Component {
   constructor() {
     super();
     this.state = {
-      email: '',
+      user: '',
       password: '',
       firstName: '',
       lastName: '',
@@ -61,7 +59,6 @@ export default class WelcomeScreen extends React.Component {
             contact: this.state.contact,
             address: this.state.address,
             email: this.state.user,
-            isBookRequestActive: false,
           });
           return alert('User Add Successfully', '', [
             {
@@ -75,6 +72,8 @@ export default class WelcomeScreen extends React.Component {
           var errorMessage = error.message;
           return alert(errorMessage);
         });
+
+      this.userLogin(email, password)
     }
   };
 
@@ -164,7 +163,7 @@ export default class WelcomeScreen extends React.Component {
                   style={styles.registerButton}
                   onPress={() =>
                     this.userSignUp(
-                      this.state.email,
+                      this.state.user,
                       this.state.password,
                       this.state.confirmPassword
                     )
@@ -180,6 +179,7 @@ export default class WelcomeScreen extends React.Component {
                   <Text style={{ color: '#ff5722' }}>Cancel</Text>
                 </TouchableOpacity>
               </View>
+              <br></br><br></br>
             </KeyboardAvoidingView>
           </ScrollView>
         </View>
@@ -189,7 +189,7 @@ export default class WelcomeScreen extends React.Component {
 
   render() {
     return (
-      <View style={{ height: 400, backgroundColor: 'blue' }}>
+      <View style={{ height: '100%', backgroundColor: '#bfe6ff' }}>
         <Text
           style={{
             color: 'black',
@@ -208,7 +208,7 @@ export default class WelcomeScreen extends React.Component {
         <View style={styles.textInputView}>
           <TextInput
             style={styles.textInput}
-            placeholder="User ID"
+            placeholder="   User ID"
             onChangeText={(text) => {
               this.setState({
                 user: text,
@@ -217,7 +217,7 @@ export default class WelcomeScreen extends React.Component {
           />
           <TextInput
             style={styles.textInput}
-            placeholder="Password"
+            placeholder="   Password"
             onChangeText={(text) => {
               this.setState({
                 password: text,
@@ -254,12 +254,10 @@ export default class WelcomeScreen extends React.Component {
 
 const styles = StyleSheet.create({
   textInputView: {
-    margin: 10,
-    marginTop: '40%',
+    marginTop: '8.8%',
     alignItems: 'center',
-    // borderWidth: 2,
     height: '80%',
-    backgroundColor: 'blue'
+    backgroundColor: '#bfe6ff'
   },
   textInput: {
     backgroundColor: 'white',
@@ -267,7 +265,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 3.8,
     borderRadius: 20,
     width: '80%',
-    height: '10%',
+    height: '5%',
   },
   button: {
     backgroundColor: 'white',

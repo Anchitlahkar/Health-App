@@ -1,18 +1,15 @@
 import firebase from 'firebase';
+require('@firebase/firestore');
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDI4XrDAeLCbuc3UO9f09bfDlHZS6JzUNU",
-    authDomain: "health-app-a6f38.firebaseapp.com",
-    projectId: "health-app-a6f38",
-    storageBucket: "health-app-a6f38.appspot.com",
-    messagingSenderId: "854024371451",
-    appId: "1:854024371451:web:0dbc462a56953f53be045e",
-    measurementId: "G-79G91FJ98W"
-  };
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
+  apiKey: "AIzaSyC_vihNXC4bYsgP1PDmj1ZO5w4GIqubJCk",
+  authDomain: "health-app-2-0.firebaseapp.com",
+  projectId: "health-app-2-0",
+  storageBucket: "health-app-2-0.appspot.com",
+  messagingSenderId: "766992141268",
+  appId: "1:766992141268:web:aac124a9c32481063ba441"
+};
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
