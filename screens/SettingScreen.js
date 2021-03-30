@@ -152,7 +152,7 @@ export default class SettingScreen extends React.Component {
 const styles = StyleSheet.create({
   formTextInput: {
     width: "75%",
-    height: RFValue(35),
+    height: RFValue(25),
     alignSelf: "center",
     borderColor: "#ffab91",
     borderRadius: 10,
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
   },
   button: {
     width: "50%",
-    height: RFValue(50),
+    height: RFValue(25),
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 10,

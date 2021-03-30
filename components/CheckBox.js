@@ -9,6 +9,9 @@ import {
   CheckBox,
 } from "react-native";
 import { RadioButton } from "react-native-paper";
+import db from "../config";
+import firebase from "firebase";
+
 
 export default class CheckBoxScreen extends React.Component {
   constructor() {
@@ -18,13 +21,46 @@ export default class CheckBoxScreen extends React.Component {
       isSelected2: false,
       isSelected3: false,
       totalPoints: 0,
+      docId: ''
     };
   }
+
+  getUserData = () => {
+    var user = firebase.auth().currentUser;
+    var email = user.email;
+
+    db.collection("Users")
+      .where("email", "==", email)
+      .get()
+      .then((snapshot) => {
+        snapshot.forEach((doc) => {
+          this.setState({
+            docId: doc.id,
+          });
+        });
+      });
+  };
+
+  pointsUpdate = (points) => {
+    db.collection("Users")
+      .doc(this.state.docId)
+      .update({
+        PerQuestion: points
+      });
+  };
+
+
+  componentDidMount(){
+    this.getUserData()
+  }
+    
   render() {
     console.log(this.state.totalPoints);
     return (
       <View>
-        <Text style={{margin: 10,fontSize: 20, fontWeight: "bold"}}>{this.props.question}</Text>
+        <Text style={{ margin: 10, fontSize: 20, fontWeight: "bold" }}>
+          {this.props.question}
+        </Text>
 
         {/* Question 1 */}
 
@@ -37,8 +73,11 @@ export default class CheckBoxScreen extends React.Component {
                   this.state.isSelected1 === true ? "checked" : "unchecked"
                 }
                 onPress={() => {
+                  this.setState({
+                    totalPoints: 0,
+                  });
                   var isSelected1 = this.state.isSelected1;
-                  const defaultPoints = this.state.totalPoints;
+                  const defaultPoints = 0;
                   var totalPoints = defaultPoints + 1;
                   this.setState({
                     isSelected1: !isSelected1,
@@ -50,6 +89,8 @@ export default class CheckBoxScreen extends React.Component {
                   !this.state.isSelected1 === true
                     ? this.setState({ totalPoints: totalPoints })
                     : this.setState({ totalPoints: defaultPoints });
+
+                  this.pointsUpdate(totalPoints)
                 }}
               />
             </View>
@@ -69,7 +110,8 @@ export default class CheckBoxScreen extends React.Component {
                 }
                 onPress={() => {
                   var isSelected2 = this.state.isSelected2;
-                  const defaultPoints = this.state.totalPoints;
+                  const defaultPoints = 0;
+                  console.log("default Points: " + defaultPoints);
                   var totalPoints = defaultPoints + 2;
                   this.setState({
                     isSelected1: false,
@@ -80,10 +122,15 @@ export default class CheckBoxScreen extends React.Component {
                   !this.state.isSelected2 === true
                     ? this.setState({ totalPoints: totalPoints })
                     : this.setState({ totalPoints: defaultPoints });
+
+                    this.pointsUpdate(totalPoints)
+                  
                 }}
               />
             </View>
-            <Text style={{ marginLeft: "-40%", marginTop: 10 }}>{this.props.answere2}</Text>
+            <Text style={{ marginLeft: "-40%", marginTop: 10 }}>
+              {this.props.answere2}
+            </Text>
           </View>
 
           {/* Question 3 */}
@@ -96,8 +143,11 @@ export default class CheckBoxScreen extends React.Component {
                   this.state.isSelected3 === true ? "checked" : "unchecked"
                 }
                 onPress={() => {
+                  this.setState({
+                    totalPoints: 0,
+                  });
                   var isSelected3 = this.state.isSelected3;
-                  const defaultPoints = this.state.totalPoints;
+                  const defaultPoints = 0;
                   var totalPoints = defaultPoints + 3;
                   this.setState({
                     isSelected1: false,
@@ -108,11 +158,14 @@ export default class CheckBoxScreen extends React.Component {
                   !this.state.isSelected3 === true
                     ? this.setState({ totalPoints: totalPoints })
                     : this.setState({ totalPoints: defaultPoints });
+
+                    this.pointsUpdate(totalPoints)
+                  
                 }}
               />
             </View>
             <Text style={{ marginLeft: "-40%", marginTop: 10 }}>
-            {this.props.answere3}
+              {this.props.answere3}
             </Text>
           </View>
         </View>

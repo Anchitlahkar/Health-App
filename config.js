@@ -6,6 +6,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyC_vihNXC4bYsgP1PDmj1ZO5w4GIqubJCk",
   authDomain: "health-app-2-0.firebaseapp.com",
   projectId: "health-app-2-0",
+  databaseURL: "https://health-app-2-0-default-rtdb.firebaseio.com/",
   storageBucket: "health-app-2-0.appspot.com",
   messagingSenderId: "766992141268",
   appId: "1:766992141268:web:aac124a9c32481063ba441"

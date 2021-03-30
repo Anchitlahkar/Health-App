@@ -87,15 +87,6 @@ b)No, I'm all clean here
 
 
 ### 12
-I think about suicide
-
-a)Every Day
-b)Weekly
-c)Every so often
-d)No, I have not thought about suicide.
-
-
-### 13
 I feel like crying for no reason
 
 a)Yes, this is true
@@ -103,7 +94,7 @@ b)Sometimes
 c)No, not really
 
 
-### 14
+### 13
 My chest feels heavy and it's hard to breath.
 
 a)Yes 
@@ -111,7 +102,7 @@ b)Sometimes
 c)No, not really
 
 
-### 15
+### 14
 I feel defeated
 
 a)I surely do.
@@ -119,7 +110,7 @@ b)A bit
 c)No, not really
 
 
-### 16
+### 15
 I'm dealing with my possible depression with...
 
 a)Seeking a spiritual power
@@ -128,7 +119,7 @@ c)Nothing. I'm lost
 d)Self help books
 
 
-### 18
+### 16
 Do you believe in a God that cares about your mental health?
 
 a)True

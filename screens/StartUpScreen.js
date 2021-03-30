@@ -3,14 +3,47 @@ import {
   Text,
   View,
   StyleSheet,
-  TextInput,
   TouchableOpacity,
-  FlatList,
-  Button,
 } from "react-native";
 import Header from "../components/Header";
+import db from "../config";
+import firebase from "firebase";
 
 export default class StartUpScreen extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      docId: ''
+    };
+  }
+  getUserData = () => {
+    var user = firebase.auth().currentUser;
+    var email = user.email;
+
+    db.collection("Users")
+      .where("email", "==", email)
+      .get()
+      .then((snapshot) => {
+        snapshot.forEach((doc) => {
+          this.setState({
+            docId: doc.id,
+          });
+        });
+      });
+  };
+
+  ResetScore = () => {
+    db.collection("Users").doc(this.state.docId).update({
+      finalPoints: 0,
+      PerQuestion: 0
+    });
+  };
+
+  componentDidMount() {
+    this.getUserData();
+  }
+
   render() {
     return (
       <View>
@@ -22,6 +55,7 @@ export default class StartUpScreen extends React.Component {
           <TouchableOpacity
             style={[styles.button, { marginLeft: "25%" }]}
             onPress={() => {
+              this.ResetScore()
               this.props.navigation.navigate("TestPage");
             }}
           >
