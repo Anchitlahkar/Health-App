@@ -35,7 +35,7 @@ export default class StartUpScreen extends React.Component {
 
   ResetScore = () => {
     db.collection("Users").doc(this.state.docId).update({
-      finalPoints: 0,
+      FINALSCORE: 0,
       PerQuestion: 0
     });
   };

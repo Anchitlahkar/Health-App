@@ -16,11 +16,12 @@ export default class TestScreen extends React.Component {
     };
   }
 
-  getUserData = () => {
+  getUserData = async () => {
     var user = firebase.auth().currentUser;
     var email = user.email;
 
-    db.collection("Users")
+    await db
+      .collection("Users")
       .where("email", "==", email)
       .get()
       .then((snapshot) => {
@@ -31,16 +32,37 @@ export default class TestScreen extends React.Component {
           });
         });
       });
+    console.log("PerQuestionFirebase: " + this.state.PerQuestion);
+    console.log("finalPointsFirebase: " + this.state.finalPoints);
+    console.log("DocId: " + this.state.docId);
   };
-  FinalUpdate = () => {
+
+  FinalUpdate = async () => {
+    var user = firebase.auth().currentUser;
+    var email = user.email;
+    await db
+      .collection("Users")
+      .where("email", "==", email)
+      .get()
+      .then((snapshot) => {
+        snapshot.forEach((doc) => {
+          this.setState({
+            finalPoints: doc.data().FINALSCORE,
+          });
+        });
+      });
+
     var final = this.state.finalPoints;
     var perQues = this.state.PerQuestion;
     var finalScore = final + perQues;
 
-    console.log("final: " + finalScore);
+    console.log("final: " + final);
+    console.log("PerQuestion: " + perQues);
+    console.log("finalScore: " + finalScore);
+    console.log("  ");
 
-    db.collection("Users").doc(this.state.docId).update({
-      finalPoints: finalScore,
+    await db.collection("Users").doc(this.state.docId).update({
+      FINALSCORE: finalScore,
     });
   };
 
@@ -49,7 +71,6 @@ export default class TestScreen extends React.Component {
   }
 
   render() {
-    console.log(this.state.finalPoints);
     // Question 1
     if (this.state.questionNo === 1) {
       return (
@@ -136,7 +157,7 @@ export default class TestScreen extends React.Component {
               this.setState({
                 questionNo: questionNo + 1,
               });
-              this.getUserData()
+              this.getUserData();
               this.FinalUpdate();
             }}
           >
@@ -185,7 +206,7 @@ export default class TestScreen extends React.Component {
               this.setState({
                 questionNo: questionNo + 1,
               });
-              this.getUserData()
+              this.getUserData();
               this.FinalUpdate();
             }}
           >
@@ -234,7 +255,7 @@ export default class TestScreen extends React.Component {
               this.setState({
                 questionNo: questionNo + 1,
               });
-              this.getUserData()
+              this.getUserData();
               this.FinalUpdate();
             }}
           >
@@ -283,7 +304,7 @@ export default class TestScreen extends React.Component {
               this.setState({
                 questionNo: questionNo + 1,
               });
-              this.getUserData()
+              this.getUserData();
               this.FinalUpdate();
             }}
           >
@@ -332,7 +353,7 @@ export default class TestScreen extends React.Component {
               this.setState({
                 questionNo: questionNo + 1,
               });
-              this.getUserData()
+              this.getUserData();
               this.FinalUpdate();
             }}
           >
@@ -381,7 +402,7 @@ export default class TestScreen extends React.Component {
               this.setState({
                 questionNo: questionNo + 1,
               });
-              this.getUserData()
+              this.getUserData();
               this.FinalUpdate();
             }}
           >
@@ -430,7 +451,7 @@ export default class TestScreen extends React.Component {
               this.setState({
                 questionNo: questionNo + 1,
               });
-              this.getUserData()
+              this.getUserData();
               this.FinalUpdate();
             }}
           >
@@ -479,7 +500,7 @@ export default class TestScreen extends React.Component {
               this.setState({
                 questionNo: questionNo + 1,
               });
-              this.getUserData()
+              this.getUserData();
               this.FinalUpdate();
             }}
           >
@@ -528,7 +549,7 @@ export default class TestScreen extends React.Component {
               this.setState({
                 questionNo: questionNo + 1,
               });
-              this.getUserData()
+              this.getUserData();
               this.FinalUpdate();
             }}
           >
@@ -577,7 +598,7 @@ export default class TestScreen extends React.Component {
               this.setState({
                 questionNo: questionNo + 1,
               });
-              this.getUserData()
+              this.getUserData();
               this.FinalUpdate();
             }}
           >
@@ -626,7 +647,7 @@ export default class TestScreen extends React.Component {
               this.setState({
                 questionNo: questionNo + 1,
               });
-              this.getUserData()
+              this.getUserData();
               this.FinalUpdate();
             }}
           >
@@ -675,7 +696,7 @@ export default class TestScreen extends React.Component {
               this.setState({
                 questionNo: questionNo + 1,
               });
-              this.getUserData()
+              this.getUserData();
               this.FinalUpdate();
             }}
           >
@@ -724,7 +745,7 @@ export default class TestScreen extends React.Component {
               this.setState({
                 questionNo: questionNo + 1,
               });
-              this.getUserData()
+              this.getUserData();
               this.FinalUpdate();
             }}
           >
@@ -773,7 +794,7 @@ export default class TestScreen extends React.Component {
               this.setState({
                 questionNo: questionNo + 1,
               });
-              this.getUserData()
+              this.getUserData();
               this.FinalUpdate();
             }}
           >
@@ -822,7 +843,7 @@ export default class TestScreen extends React.Component {
               this.setState({
                 questionNo: questionNo + 1,
               });
-              this.getUserData()
+              this.getUserData();
               this.FinalUpdate();
             }}
           >
@@ -856,6 +877,19 @@ export default class TestScreen extends React.Component {
             <Text style={{ margin: 10, fontSize: 20, fontWeight: "bold" }}>
               Please wait for your answere...
             </Text>
+
+            <TouchableOpacity
+              style={[styles.button, { marginLeft: "25%" }]}
+              onPress={() => {
+                this.props.navigation.navigate("ResultScreen");
+              }}
+            >
+              <Text
+                style={{ color: "black", fontWeight: "bold", marginTop: 5 }}
+              >
+                View Result
+              </Text>
+            </TouchableOpacity>
           </View>
         </View>
       );

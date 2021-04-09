@@ -13,8 +13,7 @@ import MyHeader from "../components/Header";
 import db from "../config";
 import firebase from "firebase";
 import { Input } from "react-native-elements";
-import {RFValue} from "react-native-responsive-fontsize"
-
+import { RFValue } from "react-native-responsive-fontsize";
 
 export default class SettingScreen extends React.Component {
   constructor() {
@@ -26,6 +25,7 @@ export default class SettingScreen extends React.Component {
       address: "",
       emailId: "",
       docId: "",
+      finalPoints: 0,
     };
   }
 
@@ -51,6 +51,7 @@ export default class SettingScreen extends React.Component {
             address: data.address,
             contact: data.contact,
             docId: doc.id,
+            finalPoints: data.FINALSCORE,
           });
         });
       });
@@ -69,12 +70,12 @@ export default class SettingScreen extends React.Component {
         address: this.state.address,
       });
 
-    alert('User Details Updated SuccessFully')
+    alert("User Details Updated SuccessFully");
   };
   render() {
     return (
       <View>
-        <MyHeader title="Settings" navigation={this.props.navigation}/>
+        <MyHeader title="Settings" navigation={this.props.navigation} />
         <KeyboardAvoidingView style={styles.KeyboardAvoidingView}>
           <Text
             style={{
@@ -135,6 +136,20 @@ export default class SettingScreen extends React.Component {
             }}
             value={this.state.address}
           />
+
+          <TextInput
+            style={styles.formTextInput}
+            placeholder={"Score"}
+            label={"Score"}
+            multiline={true}
+            onChangeText={(text) => {
+              this.setState({
+                finalPoints: text,
+              });
+            }}
+            value={this.state.finalPoints}
+          />
+          
           <View>
             <TouchableOpacity
               style={styles.button}

@@ -55,7 +55,6 @@ export default class CheckBoxScreen extends React.Component {
   }
     
   render() {
-    console.log(this.state.totalPoints);
     return (
       <View>
         <Text style={{ margin: 10, fontSize: 20, fontWeight: "bold" }}>
