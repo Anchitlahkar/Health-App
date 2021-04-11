@@ -95,9 +95,9 @@ export default class TestScreen extends React.Component {
           <View>
             <CheckBoxScreen
               question="When i'm around people, I still struggle feeling alone"
-              answere1="All The Time"
+              answere1="Not Really, no"
               answere2="Sometimes"
-              answere3="Not Really, no"
+              answere3="All The Time"
             />
           </View>
 
@@ -110,6 +110,7 @@ export default class TestScreen extends React.Component {
               });
               this.getUserData();
               this.FinalUpdate();
+              // this.props.navigation.navigate("ResultScreen");
             }}
           >
             <Text style={{ color: "black", fontWeight: "bold", marginTop: 5 }}>
@@ -144,9 +145,9 @@ export default class TestScreen extends React.Component {
           <View>
             <CheckBoxScreen
               question="I feel alone..."
-              answere1="All The Time"
+              answere1="Not Really, no"
+              answere3="All The Time"
               answere2="Sometimes"
-              answere3="Not Really, no"
             />
           </View>
 
@@ -193,9 +194,9 @@ export default class TestScreen extends React.Component {
           <View>
             <CheckBoxScreen
               question="I have put my friendships on the back burner."
-              answere1="Yes, clearly"
+              answere1="No, not really"
               answere2="A bit"
-              answere3="No, not really"
+              answere3="Yes, clearly"
             />
           </View>
 
@@ -242,9 +243,9 @@ export default class TestScreen extends React.Component {
           <View>
             <CheckBoxScreen
               question="My family just doesn't have the same priority in my life as they use to."
-              answere1="This is Truth"
+              answere1="I disagree. My family has remained important"
               answere2="A bit"
-              answere3="I disagree. My family has remained important"
+              answere3="This is Truth"
             />
           </View>
 
@@ -291,9 +292,9 @@ export default class TestScreen extends React.Component {
           <View>
             <CheckBoxScreen
               question="People exhaust me"
-              answere1="Absolutely agee"
+              answere1="Not really, no"
               answere2="Sometimes"
-              answere3="Not really, no"
+              answere3="Absolutely agee"
             />
           </View>
 
@@ -342,7 +343,7 @@ export default class TestScreen extends React.Component {
               question="My appetite has changed and..."
               answere1="Not really"
               answere2="I've lost some weight"
-              answere3="I've gained a little weight"
+              answere3="I've gained/lost weight"
             />
           </View>
 
@@ -389,9 +390,9 @@ export default class TestScreen extends React.Component {
           <View>
             <CheckBoxScreen
               question="I have given up doing things that I use to be excited about (Sports, Hobbies etc.)"
-              answere1="Yes, I would say so."
+              answere1="Not Really, no"
               answere2="A little. Some things."
-              answere3="Not Really, no"
+              answere3="Yes, I would say so."
             />
           </View>
 
@@ -438,9 +439,9 @@ export default class TestScreen extends React.Component {
           <View>
             <CheckBoxScreen
               question="My tastes in audio/visual has turned 'dark.'"
-              answere1="I would say it has turned darker, yes."
+              answere1="Not Really, no"
               answere2="Maybe a bit"
-              answere3="Not Really, no"
+              answere3="I would say it has turned darker, yes."
             />
           </View>
 
@@ -487,9 +488,9 @@ export default class TestScreen extends React.Component {
           <View>
             <CheckBoxScreen
               question="I want to runaway, but have no idea where I would go...just want to run."
-              answere1="I do feel this is true"
+              answere1="Not Really, no"
               answere2="Sometimes"
-              answere3="Not Really, no"
+              answere3="I do feel this is true"
             />
           </View>
 
@@ -536,9 +537,9 @@ export default class TestScreen extends React.Component {
           <View>
             <CheckBoxScreen
               question="I feel lost and confused and unable to think through simple tasks"
-              answere1="I do feel this is true"
+              answere1="Not Really, no"
               answere2="Sometimes"
-              answere3="Not Really, no"
+              answere3="I do feel this is true"
             />
           </View>
 
@@ -585,9 +586,9 @@ export default class TestScreen extends React.Component {
           <View>
             <CheckBoxScreen
               question="I'm not invested into personal hygiene anymore"
-              answere1="Sad but yes, it's true"
+              answere1="No, I'm all clean here"
               answere2="Sometimes"
-              answere3="No, I'm all clean here"
+              answere3="Sad but yes, it's true"
             />
           </View>
 
@@ -634,9 +635,9 @@ export default class TestScreen extends React.Component {
           <View>
             <CheckBoxScreen
               question="I feel like crying for no reason"
-              answere1="Yes, this is true"
+              answere1="Not Really, no"
               answere2="Sometimes"
-              answere3="Not Really, no"
+              answere3="Yes, this is true"
             />
           </View>
 
@@ -683,9 +684,9 @@ export default class TestScreen extends React.Component {
           <View>
             <CheckBoxScreen
               question="My chest feels heavy and it's hard to breath."
-              answere1="Yes"
+              answere1="Not Really, no"
               answere2="Sometimes"
-              answere3="Not Really, no"
+              answere3="Yes"
             />
           </View>
 
@@ -732,9 +733,9 @@ export default class TestScreen extends React.Component {
           <View>
             <CheckBoxScreen
               question="I feel defeated"
-              answere1="I surely do."
+              answere1="Not Really, no"
               answere2="A bit"
-              answere3="Not Really, no"
+              answere3="I surely do."
             />
           </View>
 
@@ -782,8 +783,8 @@ export default class TestScreen extends React.Component {
             <CheckBoxScreen
               question="I'm dealing with my possible depression with..."
               answere1="Seeking a spiritual power"
-              answere2="Nothing. I'm lost"
-              answere3="Self help books"
+              answere2="Self help books"
+              answere3="Nothing. I'm lost"
             />
           </View>
 

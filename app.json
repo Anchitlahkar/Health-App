@@ -21,6 +21,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "android": {
+      "package": "com.anchit_lahkar.snacka5152d79604e4f92a5132a9f612764ed"
     }
   }
 }
